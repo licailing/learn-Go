@@ -23,7 +23,14 @@ func main() {
 	Book1.subject = "Go 语言教程"
 	Book1.book_id = 6495407
 
-	printBook(Book1)
+	var book_ptr *Books
+	book_ptr = &Book1
+
+	book_ptr1 := book_ptr
+
+	fmt.Printf("Book title:%s\n", book_ptr.title)
+	fmt.Printf("Book1 title:%s\n", book_ptr1.title)
+	// printBook(Book1)
 	/*
 		Book title:Go 语言
 		Book author:www.shouce.ren
@@ -31,7 +38,7 @@ func main() {
 		Book book_id:6495407
 	*/
 
-	printBook1(&Book1) //传址
+	// printBook1(&Book1) //传址
 	/*
 		Book title:Go 语言
 		Book author:www.shouce.ren

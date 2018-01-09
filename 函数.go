@@ -60,3 +60,10 @@ func swap1(x1 *int, y1 *int) {
 	*x1 = *y1
 	*y1 = temp
 }
+
+/* 命名返回值 */
+func SumAndProcuct(A, B int) (add int, Multipled int) {
+	add = A + B
+	Multipled = A * B
+	return
+}
