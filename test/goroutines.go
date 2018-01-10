@@ -4,6 +4,7 @@ import "fmt"
 
 var quit chan int //只开一个信道
 var buffer_quit chan int
+var quit_test = make(chan int, 10)
 
 func foo(id int) {
 	fmt.Println("sent ", id, " to quit")
@@ -13,6 +14,11 @@ func foo(id int) {
 func foo1(id int) {
 	fmt.Println("sent ", id, " to buffer_quit")
 	buffer_quit <- id
+}
+
+func foo2(id int) {
+	fmt.Println("sent ", id, " to quit_test")
+	quit_test <- id
 }
 
 func NoBuffer_goRoutines() {
@@ -39,4 +45,19 @@ func Buffer_goRoutines() {
 	for i := 0; i < count; i++ {
 		fmt.Println("recived ", <-buffer_quit, " from buffer_quit")
 	}
+}
+
+func test() {
+	for i := 0; i < 10; i++ {
+		fmt.Println("recived ", <-quit_test, " from quit_test")
+	}
+}
+
+func GoRoutines() {
+	for i := 0; i < 10; i++ {
+		go foo2(i)
+	}
+	go test()
+
+	fmt.Println("test")
 }
