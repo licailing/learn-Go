@@ -39,4 +39,5 @@ func main() {
 	src = re.ReplaceAllString(src, "\n")
 
 	fmt.Println(strings.TrimSpace(src))
+
 }
