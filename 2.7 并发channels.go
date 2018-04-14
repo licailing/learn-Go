@@ -38,7 +38,7 @@ func main() {
 	/* 缓存channel */
 	c_b := make(chan int, 10)
 	/* cap:数组切片分配的空间大小 */
-	go fibonacci(cap(c_b), c_b)
+	go fibonacci(cap(c_b), c_b) //10
 	/* 能够不断的读取channel中的数据，直到channel被显式的关闭 */
 	for i := range c_b {
 		fmt.Println(i)
